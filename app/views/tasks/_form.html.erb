@@ -26,10 +26,12 @@
     <%= f.date_select :due_date %>
   </div>
 
-  <div class="field">
-    <%= f.label :completed %>
-    <%= f.check_box :completed %>
-  </div>
+  <% if task.persisted? %>
+    <div class="field">
+      <%= f.label :completed %>
+      <%= f.check_box :completed %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit %>
