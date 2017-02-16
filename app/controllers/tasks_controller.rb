@@ -21,6 +21,16 @@ class TasksController < ApplicationController
   def edit
   end
 
+  # PATCH/PUT /tasks/1/toggle
+  def toggle
+    @task = Task.find(params[:task_id])
+    @task.toggle! :completed
+    respond_to do |format|
+      format.html { redirect_to tasks_url, notice: 'Task was successfully updated.' }
+      format.json { head :no_content }
+    end
+  end
+
   # POST /tasks
   # POST /tasks.json
   def create
