@@ -1,0 +1,41 @@
+<%= form_for(task) do |f| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :due_date %>
+    <%= f.text_field :due_date, class: 'form-control', data: { provide: 'datepicker', 'date-format': 'yyyy-mm-dd' } %>
+  </div>
+
+  <% if task.persisted? %>
+    <div class="form-group">
+      <%= f.label :completed %>
+      <%= f.check_box :completed %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit class: 'btn btn-success' %>
+  </div>
+<% end %>
+
+<br>

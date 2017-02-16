@@ -1,0 +1,8 @@
+<h1>Editing Task</h1>
+
+<%= render 'form', task: @task %>
+
+<div class="btn-group" role="group" aria-label="...">
+  <%= link_to 'Show', @task, class: 'btn btn-default' %>
+  <%= link_to 'Back', tasks_path, class: 'btn btn-default' %>
+</div>
